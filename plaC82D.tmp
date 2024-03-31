@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://chbthblcu2cnv"]
+
+[ext_resource type="Script" path="res://ClickToMove.gd" id="1_icmsn"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_usrdn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_umgks"]
+
+[node name="player" type="Node3D"]
+transform = Transform3D(0.411727, 0, 0, 0, 0.474022, 0, 0, 0, 0.450973, 0, 0.561444, 0)
+script = ExtResource("1_icmsn")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_usrdn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_umgks")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
+path_desired_distance = 0.1
+target_desired_distance = 0.1

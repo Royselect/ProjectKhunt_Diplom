@@ -1,3 +1,96 @@
-[gd_scene format=3 uid="uid://jea7ja7604ai"]
+[gd_scene load_steps=8 format=3 uid="uid://jea7ja7604ai"]
 
-[node name="main" type="Node"]
+[ext_resource type="Script" path="res://main.gd" id="1_cykkv"]
+[ext_resource type="PackedScene" uid="uid://du7wdhi35v16r" path="res://models/House.blend" id="1_weq7u"]
+[ext_resource type="PackedScene" uid="uid://bc3f1rkfp0gwy" path="res://models/Home_location.blend" id="2_px3ko"]
+[ext_resource type="PackedScene" uid="uid://ckhka4yoqylvh" path="res://models/el.blend" id="3_c7lsm"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_y0fj3"]
+vertices = PackedVector3Array(-4.34899, 0.361586, -3.31985, -4.34899, 0.361586, 3.43015, 4.40101, 0.361586, 3.43015, 4.40101, 0.361586, -3.31985)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7v5ww"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fsmvl"]
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_cykkv")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_y0fj3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(9.73137, 3.91822e-05, 0, -0.00339689, 0.112249, 0, 0, 0, 7.6397, 0.0167122, -0.0805908, 0)
+visible = false
+mesh = SubResource("BoxMesh_7v5ww")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_fsmvl")
+
+[node name="Home_location" parent="." instance=ExtResource("2_px3ko")]
+transform = Transform3D(1, 0, 0, 0, 1.30397, 0, 0, 0, 1, -0.168015, -0.0501402, -2.76577)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.755941, -0.320489, 0.570825, -0.30385, 0.600579, 0.739581, -0.579853, -0.732524, 0.356622, 1, 19.0281, 25.5458)
+light_energy = 0.323
+
+[node name="Camera3D" type="Camera3D" parent="." groups=["Camera"]]
+transform = Transform3D(0.994893, -0.0655409, 0.0767626, -0.00577016, 0.722333, 0.691522, -0.100771, -0.688433, 0.718265, 0.140693, 2.10569, 2.67534)
+fov = 76.4
+near = 0.011
+
+[node name="House" parent="." instance=ExtResource("1_weq7u")]
+transform = Transform3D(0.183209, -0.0159177, 1.09574, 0.0148314, 0.962116, 0.0159328, -1.03929, 0.0109241, 0.193389, 0.0582523, 0.539176, -1.67818)
+
+[node name="forest_eli" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.57594, 0, 0)
+
+[node name="el" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.86141, 0, -1.03309)
+
+[node name="el2" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.28311, 0, -1.24092)
+
+[node name="el3" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.34636, 0, -0.572258)
+
+[node name="el4" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96984, 0, -0.292143)
+
+[node name="el5" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.43971, 0, -0.716833)
+
+[node name="el6" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.37646, 0, -1.34935)
+
+[node name="el7" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.98492, 0, 0.340375)
+
+[node name="el8" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.17767, 0, 0.457843)
+
+[node name="el9" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67776, 0, -0.816229)
+
+[node name="el10" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09946, 0, -0.373467)
+
+[node name="el11" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95787, 0, 1.0994)
+
+[node name="el12" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56927, 0, -0.608402)
+
+[node name="el13" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.56322, 0, 0.891569)
+
+[node name="el14" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.33128, 0, 1.23494)
+
+[node name="el15" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.70481, 0, -1.45778)
+
+[node name="el16" parent="forest_eli" groups=["forest_home"] instance=ExtResource("3_c7lsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.68973, 0, -1.83729)
